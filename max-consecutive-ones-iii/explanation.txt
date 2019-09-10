@@ -1,0 +1,18 @@
+Intuition
+
+The problem asks to get maximum consecutive ones and you are allowed to make at most K swaps. 
+So that means we need subarrays with at most K 0's. Since there could be multiple and we need to return maximum consecutive 1's count, we need to find the subarray with maximum size and atmost K 0s.
+
+Explanation
+
+There are multiple ways of coding this problem - 
+1. Get all the subarrays and check for number of zeros in each and hence the answer. Complexity O(N ^ 3).
+2. Prefix sum the number of zeros in array from 0 to i, and then get all the subarrays and the number of zeros in O(1) time. Hence the complexity is O(N ^ 2).
+3. The problem with earlier solutions is we are going through each subarray. What if traverse the subarrays and eliminate a few on the fly.
+We will decide the subarrays using the counts of zeros between 2 points, and manipulate the pointers using the count of 0s.
+
+We will have 2 points i and j. We will calculate the longest subarray for every j index.
+We will continue to increment j, until we have zeros <= K. As soon as zeros > K, betweek 'i' and 'j', we can increment 'i'. 
+Now the final values of i and j will be the subarray with at most k zeros and will be the largest since we are incrementing 'j' everytime until we get at most 'k' zeros and increment 'i' as soon as we have > k zeros. 
+Since we are using pointer manipulation to get the subarrays, the complexity comes down to O(N).
+
